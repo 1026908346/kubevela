@@ -16,9 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "/go/bin/staticcheck ./...
-GO111MODULE=on CGO_ENABLED=0 go build -o bin/vela -a -ldflags "-s -w -X github.com/oam-dev/kubevela/version.VelaVersion=master -X github.com/oam-dev/kubevela/version.GitRevision=git-b5f5bb8b" ./references/cmd/cli/main.go
-GO111MODULE=on CGO_ENABLED=0 go build -o bin/kubectl-vela -a -ldflags "-s -w -X github.com/oam-dev/kubevela/version.VelaVersion=master -X github.com/oam-dev/kubevela/version.GitRevision=git-b5f5bb8b" ./cmd/plugin/main.go"
+          command: /go/bin/staticcheck ./... &&  GO111MODULE=on CGO_ENABLED=0 go build -o bin/vela -a -ldflags "-s -w -X github.com/oam-dev/kubevela/version.VelaVersion=master -X github.com/oam-dev/kubevela/version.GitRevision=git-b5f5bb8b" ./references/cmd/cli/main.go && GO111MODULE=on CGO_ENABLED=0 go build -o bin/kubectl-vela -a -ldflags "-s -w -X github.com/oam-dev/kubevela/version.VelaVersion=master -X github.com/oam-dev/kubevela/version.GitRevision=git-b5f5bb8b" ./cmd/plugin/main.go"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
